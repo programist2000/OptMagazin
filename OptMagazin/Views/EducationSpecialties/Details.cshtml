@@ -1,0 +1,26 @@
+﻿@model OptMagazin.Models.EducationSpecialty
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EducationSpecialty</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EducationSpecialtyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EducationSpecialtyName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EducationSpecialtyId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,58 @@
+﻿@model OptMagazin.Models.Vacation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Vacation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VacationSort.VacationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VacationSort.VacationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Worker.WorkerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Worker.WorkerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VacationStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VacationStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VacationEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VacationEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VacationStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VacationStatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VacationId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

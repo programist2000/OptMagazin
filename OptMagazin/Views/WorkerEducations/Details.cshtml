@@ -1,0 +1,58 @@
+﻿@model OptMagazin.Models.WorkerEducation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WorkerEducation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EducationSpecialty.EducationSpecialtyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EducationSpecialty.EducationSpecialtyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.University.UniversityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.University.UniversityName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Worker.WorkerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Worker.WorkerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EducationStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EducationStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EducationEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EducationEnd)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WorkerEducationId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

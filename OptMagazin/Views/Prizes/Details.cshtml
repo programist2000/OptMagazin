@@ -1,0 +1,26 @@
+﻿@model OptMagazin.Models.Prize
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Prize</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PrizeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrizeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PrizeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,90 @@
+﻿@model OptMagazin.Models.Worker
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Worker</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkerGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkerGender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkerBirthday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkerBirthday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FamilyStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FamilyStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkerTelephone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkerTelephone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkerEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PassportSeries)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PassportSeries)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PassportNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PassportNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Inn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Inn)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WorkerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

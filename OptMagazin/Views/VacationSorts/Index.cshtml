@@ -1,0 +1,33 @@
+﻿@model IEnumerable<OptMagazin.Models.VacationSort>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VacationName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VacationName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.VacationSortId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.VacationSortId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.VacationSortId })
+        </td>
+    </tr>
+}
+
+</table>

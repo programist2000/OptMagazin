@@ -1,0 +1,50 @@
+﻿@model OptMagazin.Models.WorkerPrize
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WorkerPrize</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Prize.PrizeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prize.PrizeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Worker.WorkerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Worker.WorkerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrizeDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrizeDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrizeAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrizeAmount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WorkerPrizeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<OptMagazin.Models.WorkerChild>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Worker.WorkerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChildName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChildGender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChildBirthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudyPlace)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Worker.WorkerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChildName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChildGender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChildBirthday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudyPlace)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.WorkerChildId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WorkerChildId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WorkerChildId })
+        </td>
+    </tr>
+}
+
+</table>

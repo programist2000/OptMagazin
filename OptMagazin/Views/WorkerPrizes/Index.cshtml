@@ -1,0 +1,51 @@
+﻿@model IEnumerable<OptMagazin.Models.WorkerPrize>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Prize.PrizeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Worker.WorkerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrizeDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrizeAmount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prize.PrizeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Worker.WorkerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrizeDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrizeAmount)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.WorkerPrizeId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WorkerPrizeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WorkerPrizeId })
+        </td>
+    </tr>
+}
+
+</table>
