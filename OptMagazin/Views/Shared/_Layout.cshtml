@@ -26,7 +26,7 @@
                     <li>@Html.ActionLink("Работа с данными", "About", "Home")</li>
                     <li>@Html.ActionLink("Формирование отчетов", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Сотрудники", "Index", "Workers")</li>
-                    <li>@Html.ActionLink("Дети", "Index", "WorkerChilds")</li>
+          
                 </ul>
                  @Html.Partial("_LoginPartial") 
             </div>
@@ -36,6 +36,26 @@
         @RenderBody()
         <hr />
         <footer>
+            <ul>
+                <!-- <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li> -->
+                <li>@Html.ActionLink("Работа с данными", "About", "Home")</li>
+                <li>@Html.ActionLink("Формирование отчетов", "Contact", "Home")</li>
+                <li>@Html.ActionLink("Сотрудники", "Index", "Workers")</li>
+                <li>@Html.ActionLink("Дети", "Index", "WorkerChilds")</li>
+                <li>@Html.ActionLink("Категории", "Index", "Categories")</li>
+                <li>@Html.ActionLink("Причины списания", "Index", "Causes")</li>
+                <li>@Html.ActionLink("Специальности", "Index", "EducationSpecialties")</li>
+                <li>@Html.ActionLink("Должности", "Index", "Posts")</li>
+                <li>@Html.ActionLink("Премии", "Index", "Prizes")</li>
+                <li>@Html.ActionLink("Товары", "Index", "Products")</li>
+                <li>@Html.ActionLink("Университеты", "Index", "Universities")</li>
+                <li>@Html.ActionLink("Отпуска", "Index", "Vacations")</li>
+                <li>@Html.ActionLink("Виды отпусков", "Index", "VacationSorts")</li>
+                <li>@Html.ActionLink("Образование", "Index", "WorkerEducations")</li>
+                <li>@Html.ActionLink("Должности", "Index", "WorkerPosts")</li>
+                <li>@Html.ActionLink("Премии", "Index", "WorkerPrizes")</li>
+                <li>@Html.ActionLink("Списание товара", "Index", "WriteOffProducts")</li>
+            </ul>
             <p>&copy; @DateTime.Now.Year – Управление Оптовым Магазином</p>
         </footer>
     </div>

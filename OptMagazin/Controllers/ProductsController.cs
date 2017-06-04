@@ -11,112 +11,107 @@ using OptMagazin.Models;
 
 namespace OptMagazin.Controllers
 {
-    public class WorkerChildsController : Controller
+    public class ProductsController : Controller
     {
         private MagazinContext db = new MagazinContext();
 
-        // GET: WorkerChilds
+        // GET: Products
         public ActionResult Index()
         {
-            var workerChildren = db.WorkerChildren.Include(w => w.Worker);
-            return View(workerChildren.ToList());
+            return View(db.Products.ToList());
         }
 
-        // GET: WorkerChilds/Details/5
+        // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkerChild workerChild = db.WorkerChildren.Find(id);
-            if (workerChild == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(workerChild);
+            return View(product);
         }
 
-        // GET: WorkerChilds/Create
+        // GET: Products/Create
         public ActionResult Create()
         {
-            ViewBag.WorkerId = new SelectList(db.Workers, "WorkerId", "WorkerName");
             return View();
         }
 
-        // POST: WorkerChilds/Create
+        // POST: Products/Create
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "WorkerChildId,WorkerId,ChildName,ChildGender,ChildBirthday,StudyPlace")] WorkerChild workerChild)
+        public ActionResult Create([Bind(Include = "ProductId,ManufacturerId,CategoryId,ProductName,ProductCost,ProductGarantee,ProductOnStock")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.WorkerChildren.Add(workerChild);
+                db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.WorkerId = new SelectList(db.Workers, "WorkerId", "WorkerName", workerChild.WorkerId);
-            return View(workerChild);
+            return View(product);
         }
 
-        // GET: WorkerChilds/Edit/5
+        // GET: Products/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkerChild workerChild = db.WorkerChildren.Find(id);
-            if (workerChild == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.WorkerId = new SelectList(db.Workers, "WorkerId", "WorkerName", workerChild.WorkerId);
-            return View(workerChild);
+            return View(product);
         }
 
-        // POST: WorkerChilds/Edit/5
+        // POST: Products/Edit/5
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "WorkerChildId,WorkerId,ChildName,ChildGender,ChildBirthday,StudyPlace")] WorkerChild workerChild)
+        public ActionResult Edit([Bind(Include = "ProductId,ManufacturerId,CategoryId,ProductName,ProductCost,ProductGarantee,ProductOnStock")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(workerChild).State = EntityState.Modified;
+                db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.WorkerId = new SelectList(db.Workers, "WorkerId", "WorkerName", workerChild.WorkerId);
-            return View(workerChild);
+            return View(product);
         }
 
-        // GET: WorkerChilds/Delete/5
+        // GET: Products/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkerChild workerChild = db.WorkerChildren.Find(id);
-            if (workerChild == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(workerChild);
+            return View(product);
         }
 
-        // POST: WorkerChilds/Delete/5
+        // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            WorkerChild workerChild = db.WorkerChildren.Find(id);
-            db.WorkerChildren.Remove(workerChild);
+            Product product = db.Products.Find(id);
+            db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -80,6 +80,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -196,11 +198,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CategoryProductsController.cs" />
+    <Compile Include="Controllers\CausesController.cs" />
     <Compile Include="Controllers\EducationSpecialtiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\PrizesController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\UniversitiesController.cs" />
     <Compile Include="Controllers\VacationsController.cs" />
     <Compile Include="Controllers\VacationSortsController.cs" />
@@ -209,6 +215,7 @@
     <Compile Include="Controllers\WorkerPostsController.cs" />
     <Compile Include="Controllers\WorkerPrizesController.cs" />
     <Compile Include="Controllers\WorkersController.cs" />
+    <Compile Include="Controllers\WriteOffProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -219,6 +226,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MagazinModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PaginationModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\CustomMembershipProvider.cs" />
     <Compile Include="Providers\CustomRoleProvider.cs" />
@@ -253,9 +261,114 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\EducationSpecialties\Create.cshtml" />
+    <Content Include="Views\EducationSpecialties\Delete.cshtml" />
+    <Content Include="Views\EducationSpecialties\Details.cshtml" />
+    <Content Include="Views\EducationSpecialties\Edit.cshtml" />
+    <Content Include="Views\EducationSpecialties\Index.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Posts\Create.cshtml" />
+    <Content Include="Views\Posts\Delete.cshtml" />
+    <Content Include="Views\Posts\Details.cshtml" />
+    <Content Include="Views\Posts\Edit.cshtml" />
+    <Content Include="Views\Posts\Index.cshtml" />
+    <Content Include="Views\Prizes\Create.cshtml" />
+    <Content Include="Views\Prizes\Delete.cshtml" />
+    <Content Include="Views\Prizes\Details.cshtml" />
+    <Content Include="Views\Prizes\Edit.cshtml" />
+    <Content Include="Views\Prizes\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Universities\Create.cshtml" />
+    <Content Include="Views\Universities\Delete.cshtml" />
+    <Content Include="Views\Universities\Details.cshtml" />
+    <Content Include="Views\Universities\Edit.cshtml" />
+    <Content Include="Views\Universities\Index.cshtml" />
+    <Content Include="Views\Vacations\Create.cshtml" />
+    <Content Include="Views\Vacations\Delete.cshtml" />
+    <Content Include="Views\Vacations\Details.cshtml" />
+    <Content Include="Views\Vacations\Edit.cshtml" />
+    <Content Include="Views\Vacations\Index.cshtml" />
+    <Content Include="Views\VacationSorts\Create.cshtml" />
+    <Content Include="Views\VacationSorts\Delete.cshtml" />
+    <Content Include="Views\VacationSorts\Details.cshtml" />
+    <Content Include="Views\VacationSorts\Edit.cshtml" />
+    <Content Include="Views\VacationSorts\Index.cshtml" />
+    <Content Include="Views\WorkerEducations\Create.cshtml" />
+    <Content Include="Views\WorkerEducations\Delete.cshtml" />
+    <Content Include="Views\WorkerEducations\Details.cshtml" />
+    <Content Include="Views\WorkerEducations\Edit.cshtml" />
+    <Content Include="Views\WorkerEducations\Index.cshtml" />
+    <Content Include="Views\WorkerPosts\Create.cshtml" />
+    <Content Include="Views\WorkerPosts\Delete.cshtml" />
+    <Content Include="Views\WorkerPosts\Details.cshtml" />
+    <Content Include="Views\WorkerPosts\Edit.cshtml" />
+    <Content Include="Views\WorkerPosts\Index.cshtml" />
+    <Content Include="Views\WorkerPrizes\Create.cshtml" />
+    <Content Include="Views\WorkerPrizes\Delete.cshtml" />
+    <Content Include="Views\WorkerPrizes\Details.cshtml" />
+    <Content Include="Views\WorkerPrizes\Edit.cshtml" />
+    <Content Include="Views\WorkerPrizes\Index.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Web.config" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\WriteOffProducts\Create.cshtml" />
+    <Content Include="Views\WriteOffProducts\Delete.cshtml" />
+    <Content Include="Views\WriteOffProducts\Details.cshtml" />
+    <Content Include="Views\WriteOffProducts\Edit.cshtml" />
+    <Content Include="Views\WriteOffProducts\Index.cshtml" />
+    <Content Include="Views\Causes\Create.cshtml" />
+    <Content Include="Views\Causes\Delete.cshtml" />
+    <Content Include="Views\Causes\Details.cshtml" />
+    <Content Include="Views\Causes\Edit.cshtml" />
+    <Content Include="Views\Causes\Index.cshtml" />
+    <Content Include="Views\WorkerChilds\Create.cshtml" />
+    <Content Include="Views\WorkerChilds\Delete.cshtml" />
+    <Content Include="Views\WorkerChilds\Details.cshtml" />
+    <Content Include="Views\WorkerChilds\Edit.cshtml" />
+    <Content Include="Views\WorkerChilds\Index.cshtml" />
+    <Content Include="Views\Workers\Create.cshtml" />
+    <Content Include="Views\Workers\Delete.cshtml" />
+    <Content Include="Views\Workers\Details.cshtml" />
+    <Content Include="Views\Workers\Edit.cshtml" />
+    <Content Include="Views\Workers\Index.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\CategoryProducts\Create.cshtml" />
+    <Content Include="Views\CategoryProducts\Delete.cshtml" />
+    <Content Include="Views\CategoryProducts\Details.cshtml" />
+    <Content Include="Views\CategoryProducts\Edit.cshtml" />
+    <Content Include="Views\CategoryProducts\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -263,23 +376,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Account\" />
-    <Folder Include="Views\EducationSpecialties\" />
-    <Folder Include="Views\Home\" />
-    <Folder Include="Views\Manage\" />
-    <Folder Include="Views\Posts\" />
-    <Folder Include="Views\Prizes\" />
-    <Folder Include="Views\Shared\" />
-    <Folder Include="Views\Universities\" />
-    <Folder Include="Views\VacationSorts\" />
-    <Folder Include="Views\Vacations\" />
-    <Folder Include="Views\WorkerChilds\" />
-    <Folder Include="Views\WorkerEducations\" />
-    <Folder Include="Views\WorkerPosts\" />
-    <Folder Include="Views\WorkerPrizes\" />
-    <Folder Include="Views\Workers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -287,6 +384,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

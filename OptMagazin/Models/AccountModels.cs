@@ -6,31 +6,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 
 namespace OptMagazin.Models
-{
-
-    
-    
-    //public class LoginModel
-    //{
-     //   [Required]
-     //   [Display(Name = "Адрес электронной почты")]
-     //   public string Email { get; set; }
-
-     //   [Required]
-      //  [DataType(DataType.Password)]
-      //  [Display(Name = "Пароль")]
-      //  public string Password { get; set; }
-
-      //  [Display(Name = "Запомнить")]
-       // public bool RememberMe { get; set; }
-   // }
-
-    public class LogOnModel
+{ 
+    /*
+    public class LoginModel
     {
         [Required]
-        [Display(Name = "Логин")]
-        [DataType(DataType.EmailAddress)]
-        public string UserName { get; set; }
+        [Display(Name = "Адрес электронной почты")]
+        public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -40,12 +22,27 @@ namespace OptMagazin.Models
         [Display(Name = "Запомнить")]
         public bool RememberMe { get; set; }
     }
+    */
+
+    public class LogOnModel
+    {
+        [Required]
+        [Display(Name = "Логин")]
+        public string UserName { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Пароль")]
+        public string Password { get; set; }
+
+        //[Display(Name = "Запомнить")]
+        //public bool RememberMe { get; set; }
+    }
 
     public class RegisterModel
     {
         [Required]
-        [DataType(DataType.EmailAddress)]
-        [Display(Name = "Электронная почта")]
+        [Display(Name = "Логин")]
         public string Email { get; set; }
 
         [Required]

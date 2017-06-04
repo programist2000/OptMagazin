@@ -11,112 +11,116 @@ using OptMagazin.Models;
 
 namespace OptMagazin.Controllers
 {
-    public class WorkerChildsController : Controller
+    public class WriteOffProductsController : Controller
     {
         private MagazinContext db = new MagazinContext();
 
-        // GET: WorkerChilds
+        // GET: WriteOffProducts
         public ActionResult Index()
         {
-            var workerChildren = db.WorkerChildren.Include(w => w.Worker);
-            return View(workerChildren.ToList());
+            var writeOffProducts = db.WriteOffProducts.Include(w => w.Cause).Include(w => w.Product);
+            return View(writeOffProducts.ToList());
         }
 
-        // GET: WorkerChilds/Details/5
+        // GET: WriteOffProducts/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkerChild workerChild = db.WorkerChildren.Find(id);
-            if (workerChild == null)
+            WriteOffProduct writeOffProduct = db.WriteOffProducts.Find(id);
+            if (writeOffProduct == null)
             {
                 return HttpNotFound();
             }
-            return View(workerChild);
+            return View(writeOffProduct);
         }
 
-        // GET: WorkerChilds/Create
+        // GET: WriteOffProducts/Create
         public ActionResult Create()
         {
-            ViewBag.WorkerId = new SelectList(db.Workers, "WorkerId", "WorkerName");
+            ViewBag.CauseId = new SelectList(db.Causes, "CauseId", "CauseName");
+            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "ProductName");
             return View();
         }
 
-        // POST: WorkerChilds/Create
+        // POST: WriteOffProducts/Create
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "WorkerChildId,WorkerId,ChildName,ChildGender,ChildBirthday,StudyPlace")] WorkerChild workerChild)
+        public ActionResult Create([Bind(Include = "WriteOffProductId,WriteOffAmount,ProductId,WriteOffDate,CauseId")] WriteOffProduct writeOffProduct)
         {
             if (ModelState.IsValid)
             {
-                db.WorkerChildren.Add(workerChild);
+                db.WriteOffProducts.Add(writeOffProduct);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.WorkerId = new SelectList(db.Workers, "WorkerId", "WorkerName", workerChild.WorkerId);
-            return View(workerChild);
+            ViewBag.CauseId = new SelectList(db.Causes, "CauseId", "CauseName", writeOffProduct.CauseId);
+            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "ProductName", writeOffProduct.ProductId);
+            return View(writeOffProduct);
         }
 
-        // GET: WorkerChilds/Edit/5
+        // GET: WriteOffProducts/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkerChild workerChild = db.WorkerChildren.Find(id);
-            if (workerChild == null)
+            WriteOffProduct writeOffProduct = db.WriteOffProducts.Find(id);
+            if (writeOffProduct == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.WorkerId = new SelectList(db.Workers, "WorkerId", "WorkerName", workerChild.WorkerId);
-            return View(workerChild);
+            ViewBag.CauseId = new SelectList(db.Causes, "CauseId", "CauseName", writeOffProduct.CauseId);
+            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "ProductName", writeOffProduct.ProductId);
+            return View(writeOffProduct);
         }
 
-        // POST: WorkerChilds/Edit/5
+        // POST: WriteOffProducts/Edit/5
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "WorkerChildId,WorkerId,ChildName,ChildGender,ChildBirthday,StudyPlace")] WorkerChild workerChild)
+        public ActionResult Edit([Bind(Include = "WriteOffProductId,WriteOffAmount,ProductId,WriteOffDate,CauseId")] WriteOffProduct writeOffProduct)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(workerChild).State = EntityState.Modified;
+                db.Entry(writeOffProduct).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.WorkerId = new SelectList(db.Workers, "WorkerId", "WorkerName", workerChild.WorkerId);
-            return View(workerChild);
+            ViewBag.CauseId = new SelectList(db.Causes, "CauseId", "CauseName", writeOffProduct.CauseId);
+            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "ProductName", writeOffProduct.ProductId);
+            return View(writeOffProduct);
         }
 
-        // GET: WorkerChilds/Delete/5
+        // GET: WriteOffProducts/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkerChild workerChild = db.WorkerChildren.Find(id);
-            if (workerChild == null)
+            WriteOffProduct writeOffProduct = db.WriteOffProducts.Find(id);
+            if (writeOffProduct == null)
             {
                 return HttpNotFound();
             }
-            return View(workerChild);
+            return View(writeOffProduct);
         }
 
-        // POST: WorkerChilds/Delete/5
+        // POST: WriteOffProducts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            WorkerChild workerChild = db.WorkerChildren.Find(id);
-            db.WorkerChildren.Remove(workerChild);
+            WriteOffProduct writeOffProduct = db.WriteOffProducts.Find(id);
+            db.WriteOffProducts.Remove(writeOffProduct);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

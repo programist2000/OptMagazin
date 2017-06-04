@@ -29,7 +29,7 @@ namespace OptMagazin.Controllers
                 {
                     if (Membership.ValidateUser(model.UserName, model.Password))
                     {
-                        FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                        FormsAuthentication.SetAuthCookie(model.UserName, false);
                         if (Url.IsLocalUrl(returnUrl))
                         {
                             return Redirect(returnUrl);
@@ -38,6 +38,7 @@ namespace OptMagazin.Controllers
                         {
                             return RedirectToAction("Index", "Home");
                         }
+                        
                     }
                     else
                     {
@@ -67,7 +68,6 @@ namespace OptMagazin.Controllers
 
                     if (membershipUser != null)
                     {
-
                         FormsAuthentication.SetAuthCookie(model.Email, false);
                         return RedirectToAction("Index", "Home");
                     }
